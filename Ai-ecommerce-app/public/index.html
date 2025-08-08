@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI-Powered Product Catalog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    #search-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .product strong {
+      font-size: 18px;
+      color: #222;
+    }
+
+    #results h3 {
+      margin-top: 30px;
+      color: #444;
+    }
+
+    #error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 AI-Powered Product Catalog</h1>
+  <div class="intro">
+    <p>Type a natural language query to find products based on category, price, or rating.</p>
+    <p><em>Examples:</em><br>“Fitness products under $100 with good rating”<br>“Show me electronics above 4 stars”</p>
+  </div>
+
+  <div id="search-container">
+    <input id="query" type="text" placeholder="Describe what you want..." />
+    <button onclick="aiSearch()">🔍 Search</button>
+  </div>
+
+  <div id="error"></div>
+  <div id="results"></div>
+
+  <script>
+    async function aiSearch() {
+      const query = document.getElementById('query').value;
+      const resultsDiv = document.getElementById('results');
+      const errorDiv = document.getElementById('error');
+
+      resultsDiv.innerHTML = '';
+      errorDiv.textContent = '';
+
+      if (!query || query.trim().length < 3) {
+        errorDiv.textContent = '❗ Please enter a meaningful query.';
+        return;
+      }
+
+      resultsDiv.innerHTML = '<p>⏳ Searching...</p>';
+
+      try {
+        const res = await fetch('/api/ai-search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query })
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+          errorDiv.textContent = `❌ Error: ${data.error}`;
+          resultsDiv.innerHTML = '';
+          return;
+        }
+
+        if (data.results.length === 0) {
+          resultsDiv.innerHTML = '<p>No matching products found. Try a different query.</p>';
+          return;
+        }
+
+        resultsDiv.innerHTML = `<h3>Results:</h3>` + data.results.map(p => `
+          <div class="product">
+            <strong>${p.name}</strong><br>
+            <span>$${p.price.toFixed(2)} — ${p.category}</span><br>
+            <span>⭐ ${p.rating}</span><br>
+            <em>${p.description}</em>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        errorDiv.textContent = '❌ Something went wrong. Please try again later.';
+        resultsDiv.innerHTML = '';
+      }
+    }
+  </script>
+</body>
+</html>

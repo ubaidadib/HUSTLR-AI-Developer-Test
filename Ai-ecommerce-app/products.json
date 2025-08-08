@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Running Shoes",
+    "price": 89.99,
+    "category": "Shoes",
+    "description": "Lightweight running shoes with breathable mesh and cushioned soles.",
+    "rating": 4.6
+  },
+  {
+    "name": "Wireless Headphones",
+    "price": 129.95,
+    "category": "Electronics",
+    "description": "Noise-cancelling over-ear headphones with 30 hours of battery life.",
+    "rating": 4.8
+  },
+  {
+    "name": "Yoga Mat",
+    "price": 35.0,
+    "category": "Fitness",
+    "description": "Eco-friendly non-slip yoga mat for all types of yoga and pilates.",
+    "rating": 4.2
+  },
+  {
+    "name": "Smartphone",
+    "price": 699.99,
+    "category": "Electronics",
+    "description": "Latest model with OLED display and AI-powered camera system.",
+    "rating": 4.5
+  },
+  {
+    "name": "Electric Kettle",
+    "price": 49.9,
+    "category": "Home Appliances",
+    "description": "1.7L stainless steel electric kettle with auto shut-off.",
+    "rating": 4.4
+  },
+  {
+    "name": "Gaming Mouse",
+    "price": 59.99,
+    "category": "Computers",
+    "description": "Ergonomic mouse with customizable DPI and RGB lighting.",
+    "rating": 4.7
+  },
+  {
+    "name": "Winter Jacket",
+    "price": 179.0,
+    "category": "Clothing",
+    "description": "Insulated waterproof jacket suitable for extreme cold.",
+    "rating": 4.3
+  },
+  {
+    "name": "Bluetooth Speaker",
+    "price": 89.5,
+    "category": "Electronics",
+    "description": "Portable waterproof speaker with deep bass and long battery life.",
+    "rating": 4.6
+  },
+  {
+    "name": "Cookware Set",
+    "price": 149.0,
+    "category": "Kitchen",
+    "description": "10-piece non-stick cookware set made of hard-anodized aluminum.",
+    "rating": 4.4
+  },
+  {
+    "name": "Trekking Backpack",
+    "price": 119.95,
+    "category": "Outdoors",
+    "description": "60L hiking backpack with rain cover and adjustable straps.",
+    "rating": 4.5
+  },
+  {
+    "name": "Desk Lamp",
+    "price": 29.99,
+    "category": "Office",
+    "description": "LED desk lamp with dimmable brightness and USB charging port.",
+    "rating": 4.1
+  },
+  {
+    "name": "Fitness Tracker",
+    "price": 99.0,
+    "category": "Fitness",
+    "description": "Tracks steps, heart rate, sleep, and syncs with your phone.",
+    "rating": 4.3
+  }
+]
